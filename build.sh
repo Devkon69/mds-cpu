@@ -2,7 +2,8 @@
 # build.sh - mds-cpu (Midstate Walk + BLAKE3 chain) for Windows x64 (mingw-w64) and Linux.
 #   sh build.sh            both
 #   sh build.sh win        only Windows
-#   sh build.sh linux      only Linux
+#   sh build.sh linux      only Linux (dynamic, for this machine)
+#   sh build.sh linux-static   Linux, static with musl-gcc (musl-tools): runs on any x86-64 distribution
 #   FEE=N sh build.sh      dev fee of N % (default 2, FEE=0 for none)
 # Needs: gcc, python3, git; for Windows x86_64-w64-mingw32-gcc-posix (mingw-w64).
 # The first run fetches and builds Mbed TLS 3.6.4 (TLS to the pool) into ext/ and build/.
@@ -51,4 +52,8 @@ esac
 case $what in
     linux|all) mbed gcc ar build/mbedtls-lin
                build gcc build/lin build/mbedtls-lin/libmbedall.a mds-cpu -lpthread -lm;;
+esac
+case $what in
+    linux-static) mbed musl-gcc ar build/mbedtls-musl
+                  build musl-gcc build/lin-static build/mbedtls-musl/libmbedall.a mds-cpu -static -lpthread -lm -s;;
 esac

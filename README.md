@@ -13,8 +13,13 @@ A fast CPU miner for **Midstate (MDS)** on x86-64, for Windows and Linux.
 
 ## Download
 
-Windows x64: [dist/mds-cpu-0.3.1-win64.zip](dist/mds-cpu-0.3.1-win64.zip) (open it and press
-"Download raw file"). Unzip, run `test.bat`, put your address in `start_mds_cpu.bat`, start it. `package/README.txt` has the full instructions and
+- **Windows x64:** [dist/mds-cpu-0.3.1-win64.zip](dist/mds-cpu-0.3.1-win64.zip). Unzip, run
+  `test.bat`, put your address in `start_mds_cpu.bat`, start it.
+- **Linux x86-64** (static binary, any distribution):
+  [dist/mds-cpu-0.3.1-linux-x64.tar.gz](dist/mds-cpu-0.3.1-linux-x64.tar.gz). Unpack, run
+  `./mds-cpu --test`, put your address in `start_mds_cpu.sh`, start it.
+
+Open the file on GitHub and press "Download raw file". `package/README.txt` has the full instructions and
 every option.
 
 ```
@@ -54,6 +59,7 @@ Linux, or Linux cross-compiling for Windows:
 sudo apt install gcc git python3 mingw-w64      # mingw-w64 only for the Windows build
 sh build.sh linux      # -> build/lin/mds-cpu
 sh build.sh win        # -> build/win/mds-cpu.exe
+sh build.sh linux-static   # -> build/lin-static/mds-cpu (static, needs musl-tools)
 ```
 
 The first run downloads and builds Mbed TLS 3.6.4. Tests:
@@ -72,7 +78,7 @@ python3 tests/e2e_classic.py 60               # fake midstate reference pool
 | `src/walk_engine.c`, `walk_engine_body.h`, `walk_b3.h` | Midstate Walk engines (soft, AES-NI, AVX2 build) |
 | `src/walk_ref.c` | portable Walk reference |
 | `src/mds_cpu_engine.c`, `tools/gen_cpu_core.py` | BLAKE3 chain engines (SSE2, AVX2, AVX-512) |
-| `package/` | the scripts and README of the Windows package |
+| `package/`, `package-linux/` | the scripts and README of the Windows and Linux packages |
 | `tests/` | end-to-end tests against fake pools |
 
 ## License
