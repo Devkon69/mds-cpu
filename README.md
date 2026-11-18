@@ -13,8 +13,8 @@ A fast CPU miner for **Midstate (MDS)** on x86-64, for Windows and Linux.
 
 ## Download
 
-Windows builds are on the [Releases](../../releases) page: unzip, run `test.bat`, put your
-address in `start_mds_cpu.bat`, start it. `package/README.txt` has the full instructions and
+Windows x64: [dist/mds-cpu-0.3.1-win64.zip](dist/mds-cpu-0.3.1-win64.zip) (open it and press
+"Download raw file"). Unzip, run `test.bat`, put your address in `start_mds_cpu.bat`, start it. `package/README.txt` has the full instructions and
 every option.
 
 ```
